@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Read(./knowledge/**)",
+      "Read(./data/schema.sql)",
+      "Edit(./knowledge/**)",
+      "Write(./knowledge/**)",
+      "Bash(sqlite3 ./data/distribution.db:*)",
+      "Bash(ls:*)",
+      "Bash(git status)",
+      "Bash(git diff:*)"
+    ],
+    "ask": [
+      "Write(./data/**)",
+      "Bash(python3:*)",
+      "Bash(python:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Read(./data/raw/**)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(nc:*)",
+      "Bash(cat ./data/raw/*)"
+    ]
+  },
+  "cleanupPeriodDays": 7
+}

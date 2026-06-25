@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "haifu-tool": {
+      "command": "node",
+      "args": ["--experimental-sqlite", "mcp/mcp-tool-1/dist/index.js"],
+      "env": {
+        "HAIFU_DB_PATH": "./data/distribution.db",
+        "HAIFU_DEFAULT_RATE": "0.005"
+      }
+    }
+  }
+}
