@@ -1,0 +1,124 @@
+// 智翔館NEP マーケティング / データモデル v2
+// 校門配布の計画・実績入力 + 在籍 + 施策KPI。集計値のみ（個人情報は持たない）。
+// 詳細: ../../docs/データモデル.md
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/// 部門: 中等部 / RED個別
+model Division {
+  id       Int      @id @default(autoincrement())
+  name     String   @unique
+  campuses Campus[]
+}
+
+/// 地区（配布計画の単位）。plannerRole = RED個別担当 / 中等部担当
+model Area {
+  id            Int            @id @default(autoincrement())
+  name          String         @unique
+  plannerRole   String
+  note          String?
+  campuses      Campus[]
+  targetSchools TargetSchool[]
+  distributions Distribution[]
+  campaigns     Campaign[]
+}
+
+/// 拠点（校舎・教室）。1拠点=1部門=1地区
+model Campus {
+  id          Int          @id @default(autoincrement())
+  name        String       @unique
+  division    Division     @relation(fields: [divisionId], references: [id])
+  divisionId  Int
+  area        Area         @relation(fields: [areaId], references: [id])
+  areaId      Int
+  enrollments Enrollment[]
+  responses   Response[]
+}
+
+/// 配布先学校（母数=全校生徒数、ボトム配布目標）
+model TargetSchool {
+  id            Int            @id @default(autoincrement())
+  name          String         @unique
+  schoolType    String // 中 / 小
+  students      Int? // 全校生徒数（母数, シート③）
+  bottom        Int? // ボトム配布目標
+  area          Area?          @relation(fields: [areaId], references: [id])
+  areaId        Int?
+  distributions Distribution[]
+}
+
+/// 在籍（拠点×月）。中等部=中1〜3、RED個別=全学年計
+model Enrollment {
+  id        Int    @id @default(autoincrement())
+  campus    Campus @relation(fields: [campusId], references: [id])
+  campusId  Int
+  yearMonth String // 'YYYY-MM'
+  count     Int
+  draft     Boolean @default(false) // 要検証フラグ
+
+  @@unique([campusId, yearMonth])
+}
+
+/// 配布（地区×配布先学校×日）。計画枚数 / 実績枚数（Webアプリの主入力）
+model Distribution {
+  id             Int           @id @default(autoincrement())
+  date           String // 'YYYY-MM-DD'
+  area           Area          @relation(fields: [areaId], references: [id])
+  areaId         Int
+  targetSchool   TargetSchool? @relation(fields: [targetSchoolId], references: [id])
+  targetSchoolId Int?
+  item           String? // ティッシュ / チラシ 等
+  plannedQty     Int? // 計画枚数
+  actualQty      Int? // 実績枚数
+  campaign       Campaign?     @relation(fields: [campaignId], references: [id])
+  campaignId     Int?
+  note           String? // 状況メモ（個人名は入れない）
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  @@index([date])
+  @@index([areaId])
+}
+
+/// 反応（拠点×チャネル×日）。カウントのみ
+model Response {
+  id         Int       @id @default(autoincrement())
+  campus     Campus    @relation(fields: [campusId], references: [id])
+  campusId   Int
+  date       String?
+  channel    String // 体験申込 / 問い合わせ / 入会 など
+  count      Int
+  campaign   Campaign? @relation(fields: [campaignId], references: [id])
+  campaignId Int?
+}
+
+/// 施策（夏期動員など）
+model Campaign {
+  id            Int            @id @default(autoincrement())
+  name          String
+  periodStart   String?
+  periodEnd     String?
+  area          Area?          @relation(fields: [areaId], references: [id])
+  areaId        Int?
+  notes         String?
+  kpiTargets    KpiTarget[]
+  distributions Distribution[]
+  responses     Response[]
+}
+
+/// KPI目標（シート④）
+model KpiTarget {
+  id          Int      @id @default(autoincrement())
+  campaign    Campaign @relation(fields: [campaignId], references: [id])
+  campaignId  Int
+  metric      String // 体験申込 / 入会 / 夏期動員 / 課題完成合宿 ...
+  targetValue Int
+  asOf        String? // '6/30時点' / '最終(7月)'
+}

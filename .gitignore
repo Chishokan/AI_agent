@@ -1,6 +1,7 @@
 # 認証情報・機密
 .env
 .env.*
+!.env.example
 secrets/
 
 # 業務データ層: schema.sql 以外はコミットしない
@@ -10,6 +11,13 @@ secrets/
 # MCPツールのビルド成果物・依存
 mcp/mcp-tool-1/dist/
 node_modules/
+
+# webapp（Next.js / Prisma）
+webapp/.next/
+webapp/node_modules/
+webapp/prisma/dev.db
+webapp/prisma/migrations/dev.db
+*.db
 
 # OS / エディタ
 .DS_Store
