@@ -1,0 +1,602 @@
+[
+  {
+    "area": "大島地区",
+    "yearMonth": "2026-03",
+    "school": "大崎中",
+    "planned": 180,
+    "actual": 165,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大島地区",
+    "yearMonth": "2026-03",
+    "school": "西海中",
+    "planned": 185,
+    "actual": 145,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大島地区",
+    "yearMonth": "2026-03",
+    "school": "大崎小",
+    "planned": 200,
+    "actual": 230,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大島地区",
+    "yearMonth": "2026-05",
+    "school": "大崎中",
+    "planned": 90,
+    "actual": 90,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大島地区",
+    "yearMonth": "2026-05",
+    "school": "西海中",
+    "planned": 160,
+    "actual": 142,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大島地区",
+    "yearMonth": "2026-05",
+    "school": "西海東小",
+    "planned": 150,
+    "actual": 141,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大島地区",
+    "yearMonth": "2026-05",
+    "school": "大崎小",
+    "planned": 210,
+    "actual": 187,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大島地区",
+    "yearMonth": "2026-06",
+    "school": "大崎中",
+    "planned": 90,
+    "actual": 0,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大島地区",
+    "yearMonth": "2026-06",
+    "school": "西海中",
+    "planned": 80,
+    "actual": 0,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大島地区",
+    "yearMonth": "2026-06",
+    "school": "西海東小",
+    "planned": 60,
+    "actual": 0,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大島地区",
+    "yearMonth": "2026-06",
+    "school": "大崎小",
+    "planned": 140,
+    "actual": 0,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "駅前地区",
+    "yearMonth": "2026-04",
+    "school": "祇園中",
+    "planned": 260,
+    "actual": 170,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "駅前地区",
+    "yearMonth": "2026-04",
+    "school": "山澄中",
+    "planned": 120,
+    "actual": 119,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "駅前地区",
+    "yearMonth": "2026-04",
+    "school": "福石中",
+    "planned": 200,
+    "actual": 91,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "駅前地区",
+    "yearMonth": "2026-04",
+    "school": "崎辺中",
+    "planned": 150,
+    "actual": 90,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "駅前地区",
+    "yearMonth": "2026-04",
+    "school": "祇園小",
+    "planned": 150,
+    "actual": 190,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "駅前地区",
+    "yearMonth": "2026-04",
+    "school": "白南風小",
+    "planned": 320,
+    "actual": 121,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "駅前地区",
+    "yearMonth": "2026-05",
+    "school": "祇園中",
+    "planned": 250,
+    "actual": 147,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "駅前地区",
+    "yearMonth": "2026-05",
+    "school": "山澄中",
+    "planned": 200,
+    "actual": 168,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "駅前地区",
+    "yearMonth": "2026-05",
+    "school": "福石中",
+    "planned": 250,
+    "actual": 134,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "駅前地区",
+    "yearMonth": "2026-05",
+    "school": "崎辺中",
+    "planned": 200,
+    "actual": 57,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "駅前地区",
+    "yearMonth": "2026-05",
+    "school": "祇園小",
+    "planned": 240,
+    "actual": 168,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "駅前地区",
+    "yearMonth": "2026-05",
+    "school": "白南風小",
+    "planned": 220,
+    "actual": 116,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "駅前地区",
+    "yearMonth": "2026-06",
+    "school": "祇園中",
+    "planned": 200,
+    "actual": 93,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "駅前地区",
+    "yearMonth": "2026-06",
+    "school": "山澄中",
+    "planned": 150,
+    "actual": 74,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "駅前地区",
+    "yearMonth": "2026-06",
+    "school": "福石中",
+    "planned": 150,
+    "actual": 137,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "駅前地区",
+    "yearMonth": "2026-06",
+    "school": "崎辺中",
+    "planned": 170,
+    "actual": 92,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "駅前地区",
+    "yearMonth": "2026-06",
+    "school": "祇園小",
+    "planned": 150,
+    "actual": 100,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "駅前地区",
+    "yearMonth": "2026-06",
+    "school": "白南風小",
+    "planned": 150,
+    "actual": 89,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "日野地区",
+    "yearMonth": "2026-03",
+    "school": "日野中",
+    "planned": 400,
+    "actual": 300,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "日野地区",
+    "yearMonth": "2026-03",
+    "school": "相浦中",
+    "planned": 350,
+    "actual": 213,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "日野地区",
+    "yearMonth": "2026-03",
+    "school": "日野小",
+    "planned": 50,
+    "actual": 11,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "日野地区",
+    "yearMonth": "2026-03",
+    "school": "相浦小",
+    "planned": 100,
+    "actual": 34,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "日野地区",
+    "yearMonth": "2026-05",
+    "school": "日野中",
+    "planned": 110,
+    "actual": 96,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "日野地区",
+    "yearMonth": "2026-05",
+    "school": "相浦中",
+    "planned": 250,
+    "actual": 77,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "日野地区",
+    "yearMonth": "2026-05",
+    "school": "愛宕中",
+    "planned": 180,
+    "actual": 74,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "日野地区",
+    "yearMonth": "2026-05",
+    "school": "日野小",
+    "planned": 100,
+    "actual": 100,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "日野地区",
+    "yearMonth": "2026-05",
+    "school": "相浦小",
+    "planned": 300,
+    "actual": 56,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "日野地区",
+    "yearMonth": "2026-06",
+    "school": "日野中",
+    "planned": 420,
+    "actual": 90,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "日野地区",
+    "yearMonth": "2026-06",
+    "school": "相浦中",
+    "planned": 200,
+    "actual": 150,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "日野地区",
+    "yearMonth": "2026-06",
+    "school": "愛宕中",
+    "planned": 230,
+    "actual": 119,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "日野地区",
+    "yearMonth": "2026-06",
+    "school": "日野小",
+    "planned": 50,
+    "actual": 0,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "佐々地区",
+    "yearMonth": "2026-03",
+    "school": "佐々中",
+    "planned": 500,
+    "actual": 228,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "佐々地区",
+    "yearMonth": "2026-03",
+    "school": "佐々小",
+    "planned": 47,
+    "actual": 24,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "佐々地区",
+    "yearMonth": "2026-03",
+    "school": "口石小",
+    "planned": 64,
+    "actual": 33,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "佐々地区",
+    "yearMonth": "2026-04",
+    "school": "佐々中",
+    "planned": 500,
+    "actual": 295,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "佐々地区",
+    "yearMonth": "2026-05",
+    "school": "佐々中",
+    "planned": 300,
+    "actual": 95,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "佐々地区",
+    "yearMonth": "2026-05",
+    "school": "佐々小",
+    "planned": 200,
+    "actual": 78,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "佐々地区",
+    "yearMonth": "2026-05",
+    "school": "口石小",
+    "planned": 200,
+    "actual": 158,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "佐々地区",
+    "yearMonth": "2026-06",
+    "school": "佐々中",
+    "planned": 100,
+    "actual": 100,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "佐々地区",
+    "yearMonth": "2026-06",
+    "school": "小佐々中",
+    "planned": 50,
+    "actual": 63,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "佐々地区",
+    "yearMonth": "2026-06",
+    "school": "吉井中",
+    "planned": 50,
+    "actual": 0,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大野地区",
+    "yearMonth": "2026-04",
+    "school": "大野中",
+    "planned": 360,
+    "actual": 290,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大野地区",
+    "yearMonth": "2026-04",
+    "school": "中里中",
+    "planned": 250,
+    "actual": 300,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大野地区",
+    "yearMonth": "2026-04",
+    "school": "大野小",
+    "planned": 400,
+    "actual": 345,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大野地区",
+    "yearMonth": "2026-04",
+    "school": "中里小",
+    "planned": 100,
+    "actual": 50,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大野地区",
+    "yearMonth": "2026-04",
+    "school": "春日小",
+    "planned": 100,
+    "actual": 50,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大野地区",
+    "yearMonth": "2026-05",
+    "school": "大野中",
+    "planned": 300,
+    "actual": 240,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大野地区",
+    "yearMonth": "2026-05",
+    "school": "中里中",
+    "planned": 275,
+    "actual": 282,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大野地区",
+    "yearMonth": "2026-05",
+    "school": "大野小",
+    "planned": 350,
+    "actual": 284,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大野地区",
+    "yearMonth": "2026-05",
+    "school": "中里小",
+    "planned": 100,
+    "actual": 100,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大野地区",
+    "yearMonth": "2026-05",
+    "school": "春日小",
+    "planned": 260,
+    "actual": 160,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大野地区",
+    "yearMonth": "2026-06",
+    "school": "大野中",
+    "planned": 410,
+    "actual": 260,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大野地区",
+    "yearMonth": "2026-06",
+    "school": "中里中",
+    "planned": 100,
+    "actual": 100,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大野地区",
+    "yearMonth": "2026-06",
+    "school": "大野小",
+    "planned": 250,
+    "actual": 150,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大野地区",
+    "yearMonth": "2026-06",
+    "school": "中里小",
+    "planned": 100,
+    "actual": 50,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "大野地区",
+    "yearMonth": "2026-06",
+    "school": "春日小",
+    "planned": 150,
+    "actual": 110,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "日宇地区",
+    "yearMonth": "2026-05",
+    "school": "日宇中",
+    "planned": 150,
+    "actual": 75,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "日宇地区",
+    "yearMonth": "2026-05",
+    "school": "大塔小",
+    "planned": 300,
+    "actual": 203,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "日宇地区",
+    "yearMonth": "2026-06",
+    "school": "日宇中",
+    "planned": 300,
+    "actual": 240,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "日宇地区",
+    "yearMonth": "2026-06",
+    "school": "大塔小",
+    "planned": 270,
+    "actual": 70,
+    "note": "シート①月次取込"
+  },
+  {
+    "area": "広田地区",
+    "yearMonth": "2026-03",
+    "school": null,
+    "planned": 1900,
+    "actual": 951,
+    "note": "各校合計（配布計セル式エラーのため学校別は保留）"
+  },
+  {
+    "area": "広田地区",
+    "yearMonth": "2026-04",
+    "school": null,
+    "planned": 1487,
+    "actual": 554,
+    "note": "各校合計（配布計セル式エラーのため学校別は保留）"
+  },
+  {
+    "area": "広田地区",
+    "yearMonth": "2026-05",
+    "school": null,
+    "planned": 1560,
+    "actual": 1155,
+    "note": "各校合計（配布計セル式エラーのため学校別は保留）"
+  },
+  {
+    "area": "広田地区",
+    "yearMonth": "2026-06",
+    "school": null,
+    "planned": 860,
+    "actual": 240,
+    "note": "各校合計（配布計セル式エラーのため学校別は保留）"
+  }
+]

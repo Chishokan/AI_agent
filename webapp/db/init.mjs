@@ -51,6 +51,20 @@ const CHUTOBU_ENROLLMENT = {
 
 // RED個別在籍（確定）: RED月次P&Lシートの「在籍数」より（2026年度 5〜7月の実績）。
 // 大島教室はシート上「青雲学舎」名義。合算在籍(5月232/6月245/7月251)と一致を確認済み。
+// 配布先学校マスタ [学校名, 種別(中/小), 主たる地区]。愛宕中は駅前/日野両方の配布先だが名称一意のため駅前に紐付け（配布行は地区を別途保持）。
+const TARGET_SCHOOLS = [
+  ["広田中", "中", "広田"], ["早岐中", "中", "広田"], ["東明中", "中", "広田"],
+  ["広田小", "小", "広田"], ["早岐小", "小", "広田"], ["花高小", "小", "広田"],
+  ["大崎中", "中", "大島"], ["西海中", "中", "大島"], ["西海東小", "小", "大島"], ["大崎小", "小", "大島"],
+  ["佐々中", "中", "佐々"], ["小佐々中", "中", "佐々"], ["吉井中", "中", "佐々"], ["佐々小", "小", "佐々"], ["口石小", "小", "佐々"],
+  ["日宇中", "中", "日宇"], ["大塔小", "小", "日宇"], ["黒髪小", "小", "日宇"], ["日宇小", "小", "日宇"],
+  ["祇園中", "中", "駅前地区"], ["山澄中", "中", "駅前地区"], ["愛宕中", "中", "駅前地区"], ["福石中", "中", "駅前地区"], ["崎辺中", "中", "駅前地区"],
+  ["祇園小", "小", "駅前地区"], ["白南風小", "小", "駅前地区"],
+  ["日野中", "中", "日野地区"], ["相浦中", "中", "日野地区"], ["日野小", "小", "日野地区"], ["相浦小", "小", "日野地区"],
+  ["大野中", "中", "大野地区"], ["中里中", "中", "大野地区"], ["柚木中", "中", "大野地区"],
+  ["大野小", "小", "大野地区"], ["中里小", "小", "大野地区"], ["春日小", "小", "大野地区"],
+];
+
 const RED_ENROLLMENT = {
   京町教室: { "2026-05": 50, "2026-06": 54, "2026-07": 55 },
   広田教室: { "2026-05": 54, "2026-06": 56, "2026-07": 56 },
@@ -98,7 +112,32 @@ if (withSeed) {
   seedEnr(RED_ENROLLMENT, 0); // RED個別: 確定
 }
 
+// 配布先学校マスタ + 配布実績（シート①の月次取込、検算済み）
+let schoolCount = 0;
+let distCount = 0;
+if (withSeed) {
+  // 取込データは「広田地区」等の表記、Areaマスタは単独地区を「広田」等で保持しているため吸収。
+  const AREA_ALIAS = { "広田地区": "広田", "大島地区": "大島", "佐々地区": "佐々", "日宇地区": "日宇" };
+  const areaId = (name) => {
+    const row = db.prepare("SELECT id FROM Area WHERE name=?").get(AREA_ALIAS[name] ?? name);
+    if (!row) throw new Error(`地区が見つかりません: ${name}`);
+    return row.id;
+  };
+  const schoolId = {};
+  const insSchool = db.prepare("INSERT INTO TargetSchool(name,schoolType,areaId) VALUES(?,?,?)");
+  for (const [name, type, area] of TARGET_SCHOOLS) {
+    schoolId[name] = Number(insSchool.run(name, type, areaId(area)).lastInsertRowid);
+    schoolCount++;
+  }
+  const distRows = JSON.parse(readFileSync(resolve(HERE, "distribution-import-2026.json"), "utf8"));
+  const insDist = db.prepare("INSERT INTO Distribution(date,areaId,targetSchoolId,plannedQty,actualQty,note) VALUES(?,?,?,?,?,?)");
+  for (const r of distRows) {
+    insDist.run(`${r.yearMonth}-01`, areaId(r.area), r.school ? schoolId[r.school] : null, r.planned, r.actual, r.note);
+    distCount++;
+  }
+}
+
 db.close();
 console.log(`OK: ${DB_PATH}`);
-console.log(`  職員 ${STAFF.length} / 部門 ${DIVISIONS.length} / 地区 ${AREAS.length} / 拠点 ${CAMPUSES.length}` + (withSeed ? ` / 在籍 ${enrCount}` : ""));
+console.log(`  職員 ${STAFF.length} / 部門 ${DIVISIONS.length} / 地区 ${AREAS.length} / 拠点 ${CAMPUSES.length}` + (withSeed ? ` / 在籍 ${enrCount} / 配布先校 ${schoolCount} / 配布 ${distCount}` : ""));
 console.log(`  初期ログイン: ${STAFF.map((s) => s.email).join(", ")} / パスワード= ${SEED_PASSWORD}（必ず変更）`);
