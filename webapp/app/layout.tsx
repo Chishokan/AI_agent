@@ -18,7 +18,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <header className="topbar">
             <nav>
               <Link href="/">ホーム</Link>
+              <Link href="/dashboard">ダッシュボード</Link>
               <Link href="/distributions">配布計画・実績</Link>
+              <Link href="/enrollment">在籍入力</Link>
             </nav>
             <div className="muted" style={{ fontSize: "0.85rem" }}>
               {staff.name}（{staff.role}）
