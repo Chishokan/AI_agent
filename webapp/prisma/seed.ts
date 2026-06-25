@@ -8,8 +8,17 @@
  * 実行: webapp/ で `npx prisma db seed`（package.json の prisma.seed に設定）
  */
 import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
+
+// 初期ログインアカウント（初回起動用・要パスワード変更）。
+// パスワードは環境変数 SEED_STAFF_PASSWORD で上書き可。既定は "change-me"。
+const SEED_PASSWORD = process.env.SEED_STAFF_PASSWORD ?? "change-me";
+const STAFF: Array<{ email: string; name: string; role: string }> = [
+  { email: "red@example.com", name: "RED個別担当", role: "RED個別担当" },
+  { email: "chu@example.com", name: "中等部担当", role: "中等部担当" },
+];
 
 const DIVISIONS = ["中等部", "RED個別"] as const;
 
@@ -48,6 +57,14 @@ const CHUTOBU_ENROLLMENT_DRAFT: Record<string, Record<string, number>> = {
 };
 
 async function main() {
+  const passwordHash = await bcrypt.hash(SEED_PASSWORD, 10);
+  for (const s of STAFF) {
+    await prisma.staff.upsert({
+      where: { email: s.email },
+      update: { name: s.name, role: s.role },
+      create: { ...s, passwordHash },
+    });
+  }
   for (const name of DIVISIONS) {
     await prisma.division.upsert({ where: { name }, update: {}, create: { name } });
   }
@@ -77,7 +94,8 @@ async function main() {
       });
     }
   }
-  console.log("seed 完了: 部門", DIVISIONS.length, "/ 地区", AREAS.length, "/ 拠点", CAMPUSES.length);
+  console.log("seed 完了: 職員", STAFF.length, "/ 部門", DIVISIONS.length, "/ 地区", AREAS.length, "/ 拠点", CAMPUSES.length);
+  console.log(`初期ログイン: ${STAFF.map((s) => s.email).join(", ")} / パスワード= ${SEED_PASSWORD}（必ず変更してください）`);
 }
 
 main()

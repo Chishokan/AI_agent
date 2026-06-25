@@ -11,6 +11,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+/// 職員（簡易ログイン用）。個人情報は最小限（氏名・社内メール・役割）。
+model Staff {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  name         String
+  passwordHash String
+  role         String // RED個別担当 / 中等部担当 / 管理
+  createdAt    DateTime @default(now())
+}
+
 /// 部門: 中等部 / RED個別
 model Division {
   id       Int      @id @default(autoincrement())
