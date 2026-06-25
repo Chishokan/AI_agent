@@ -3,6 +3,8 @@
   "permissions": {
     "allow": [
       "Read(./knowledge/**)",
+      "Read(./sql/**)",
+      "Read(./examples/**)",
       "Read(./data/schema.sql)",
       "Edit(./knowledge/**)",
       "Write(./knowledge/**)",

@@ -9,6 +9,8 @@
    - Console 側で spend limit（上限）を設定しておく
 2. データDBの初期化（`sqlite3` CLI が必要）
    - `sqlite3 ./data/distribution.db < ./data/schema.sql`
+   - 動作確認用にサンプルデータを入れる場合（任意・ダミー）:
+     `sqlite3 ./data/distribution.db < ./examples/seed.example.sql`
 3. MCPツール1号 のビルド（`mcp/README.md` 参照）
    - `cd mcp/mcp-tool-1 && npm install && npm run build`
 4. このディレクトリで `claude` を起動。`.mcp.json` のサーバー承認は初回プロンプトで許可。
@@ -18,6 +20,11 @@
 - `/配布計画 駅前校 目標30件`
 - `/実績分析 2026-04`
 - `/提案作成 大島校 体験申込の底上げ`
+
+## 集計クエリ
+
+- `/実績分析` は `sql/分析/` の既製クエリを使う（`sql/README.md` 参照）。
+- 配布・反応は**校舎単位**で部門の列を持たない。部門の粒度は在籍数（enrollment）のみ。
 
 ## データの扱い
 
