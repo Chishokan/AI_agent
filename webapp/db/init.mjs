@@ -49,6 +49,18 @@ const CHUTOBU_ENROLLMENT_DRAFT = {
   日野校: { "2026-04": 38, "2026-05": 38, "2026-06": 32, "2026-07": 32 },
 };
 
+// RED個別在籍（確定）: RED月次P&Lシートの「在籍数」より（2026年度 5〜7月の実績）。
+// 大島教室はシート上「青雲学舎」名義。合算在籍(5月232/6月245/7月251)と一致を確認済み。
+const RED_ENROLLMENT = {
+  京町教室: { "2026-05": 50, "2026-06": 54, "2026-07": 55 },
+  広田教室: { "2026-05": 54, "2026-06": 56, "2026-07": 56 },
+  大野教室: { "2026-05": 12, "2026-06": 14, "2026-07": 16 },
+  日野教室: { "2026-05": 37, "2026-06": 36, "2026-07": 38 },
+  佐々教室: { "2026-05": 17, "2026-06": 18, "2026-07": 19 },
+  ネクスタ: { "2026-05": 30, "2026-06": 33, "2026-07": 34 },
+  大島教室: { "2026-05": 32, "2026-06": 34, "2026-07": 33 },
+};
+
 if (existsSync(DB_PATH)) {
   if (!force) { console.error(`既にDBがあります: ${DB_PATH}\n作り直すには --force を付けてください。`); process.exit(1); }
   rmSync(DB_PATH);
@@ -72,13 +84,18 @@ for (const [name, div, area] of CAMPUSES) {
 
 let enrCount = 0;
 if (withSeed) {
-  for (const [campusName, byMonth] of Object.entries(CHUTOBU_ENROLLMENT_DRAFT)) {
-    const campusId = db.prepare("SELECT id FROM Campus WHERE name=?").get(campusName).id;
-    for (const [yearMonth, count] of Object.entries(byMonth)) {
-      db.prepare("INSERT INTO Enrollment(campusId,yearMonth,count,draft) VALUES(?,?,?,1)").run(campusId, yearMonth, count);
-      enrCount++;
+  const insEnr = db.prepare("INSERT INTO Enrollment(campusId,yearMonth,count,draft) VALUES(?,?,?,?)");
+  const seedEnr = (table, draft) => {
+    for (const [campusName, byMonth] of Object.entries(table)) {
+      const campusId = db.prepare("SELECT id FROM Campus WHERE name=?").get(campusName).id;
+      for (const [yearMonth, count] of Object.entries(byMonth)) {
+        insEnr.run(campusId, yearMonth, count, draft);
+        enrCount++;
+      }
     }
-  }
+  };
+  seedEnr(CHUTOBU_ENROLLMENT_DRAFT, 1); // 中等部: 下書き
+  seedEnr(RED_ENROLLMENT, 0); // RED個別: 確定
 }
 
 db.close();
