@@ -12,11 +12,11 @@ secrets/
 mcp/mcp-tool-1/dist/
 node_modules/
 
-# webapp（Next.js / Prisma）
+# webapp（Next.js / node:sqlite）
 webapp/.next/
 webapp/node_modules/
-webapp/prisma/dev.db
-webapp/prisma/migrations/dev.db
+webapp/data/
+webapp/next-env.d.ts
 *.db
 
 # OS / エディタ

@@ -1,19 +1,23 @@
 import Link from "next/link";
-import { prisma } from "@/lib/prisma";
-import { currentStaffId } from "@/lib/session";
 import { redirect } from "next/navigation";
+import { all, get } from "@/lib/db";
+import { currentStaffId } from "@/lib/session";
 
 export const dynamic = "force-dynamic";
+
+type Area = { id: number; name: string; plannerRole: string };
+type Campus = { name: string; areaId: number; divisionName: string };
 
 export default async function Home() {
   if (currentStaffId() == null) redirect("/login");
 
-  const areas = await prisma.area.findMany({
-    include: { campuses: { include: { division: true } } },
-    orderBy: { id: "asc" },
-  });
-  const enrollments = await prisma.enrollment.count();
-  const distributions = await prisma.distribution.count();
+  const areas = all<Area>("SELECT id, name, plannerRole FROM Area ORDER BY id");
+  const campuses = all<Campus>(
+    `SELECT c.name, c.areaId, d.name AS divisionName
+       FROM Campus c JOIN Division d ON d.id = c.divisionId ORDER BY c.id`,
+  );
+  const distributions = get<{ n: number }>("SELECT COUNT(*) AS n FROM Distribution")?.n ?? 0;
+  const enrollments = get<{ n: number }>("SELECT COUNT(*) AS n FROM Enrollment")?.n ?? 0;
 
   return (
     <main>
@@ -45,7 +49,7 @@ export default async function Home() {
             <tr key={a.id}>
               <td>{a.name}</td>
               <td>{a.plannerRole}</td>
-              <td>{a.campuses.map((c) => `${c.name}(${c.division.name})`).join(" / ")}</td>
+              <td>{campuses.filter((c) => c.areaId === a.id).map((c) => `${c.name}(${c.divisionName})`).join(" / ")}</td>
             </tr>
           ))}
         </tbody>

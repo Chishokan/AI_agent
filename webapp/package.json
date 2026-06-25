@@ -4,20 +4,16 @@
   "private": true,
   "description": "校門配布 計画/実績 入力Webアプリ + エージェントAPI連携（智翔館NEP）",
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env NODE_OPTIONS=--experimental-sqlite next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "cross-env NODE_OPTIONS=--experimental-sqlite next start",
     "lint": "next lint",
-    "db:migrate": "prisma migrate dev",
-    "db:seed": "prisma db seed",
-    "db:studio": "prisma studio"
-  },
-  "prisma": {
-    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+    "db:init": "node --experimental-sqlite db/init.mjs",
+    "db:init:seed": "node --experimental-sqlite db/init.mjs --seed"
   },
   "dependencies": {
-    "@prisma/client": "^5.18.0",
     "bcryptjs": "^2.4.3",
+    "cross-env": "^7.0.3",
     "next": "^14.2.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -28,11 +24,9 @@
     "@types/node": "^22.0.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "prisma": "^5.18.0",
-    "ts-node": "^10.9.2",
     "typescript": "^5.5.0"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22.5.0"
   }
 }
