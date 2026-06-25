@@ -7,10 +7,12 @@
 1. 認証（会社の Claude Console アカウント / 商用規約）
    - `export ANTHROPIC_API_KEY="（会社アカウントのAPIキー）"`
    - Console 側で spend limit（上限）を設定しておく
-2. データDBの初期化（`sqlite3` CLI が必要）
-   - `sqlite3 ./data/distribution.db < ./data/schema.sql`
-   - 動作確認用にサンプルデータを入れる場合（任意・ダミー）:
-     `sqlite3 ./data/distribution.db < ./examples/seed.example.sql`
+2. データDBの初期化
+   - `sqlite3` CLI がある場合:
+     `sqlite3 ./data/distribution.db < ./data/schema.sql`
+     （任意・ダミーで動作確認: `sqlite3 ./data/distribution.db < ./examples/seed.example.sql`）
+   - `sqlite3` CLI が無い場合（Node >=22.5 で代替）:
+     `npm run db:init`（schema のみ） / `npm run db:init:seed`（サンプルseed込み）
 3. MCPツール1号 のビルド（`mcp/README.md` 参照）
    - `cd mcp/mcp-tool-1 && npm install && npm run build`
 4. このディレクトリで `claude` を起動。`.mcp.json` のサーバー承認は初回プロンプトで許可。

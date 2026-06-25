@@ -1,0 +1,14 @@
+{
+  "name": "chishokan-nep-marketing-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "智翔館NEP マーケティング・エージェント（校門配布の配布計画・実績分析・提案）",
+  "scripts": {
+    "db:init": "node --experimental-sqlite scripts/init-db.mjs",
+    "db:init:seed": "node --experimental-sqlite scripts/init-db.mjs --seed"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  }
+}
